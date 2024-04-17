@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Summarizer</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'summarizer/style.css' %}">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Media Summarizer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<section class="container-fluid my-5 custom-divider">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 text-center">
+                <h1 class="mb-4">Welcome to Media Summarizer</h1>
+                <p class="lead">Media Summarizer is a powerful tool that simplifies the process of summarizing textual content
+                    and YouTube videos. Whether you have a lengthy PDF document, an article, or a YouTube video that needs to be
+                    condensed, our summarizer can quickly generate concise summaries for you.</p>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        Upload Document
+                    </div>
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data" id="upload_form">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="document_type">Select document type:</label>
+                                <select class="form-control" name="document_type" id="document_type">
+                                    <option value="pdf">PDF</option>
+                                    <option value="youtube">YouTube Video</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="document">Choose file:</label>
+                                <input type="file" class="form-control-file" name="document" id="document">
+                            </div>
+                            <div class="form-group" style="display: none;" id="youtube_url_div">
+                                <label for="youtube_url">YouTube URL:</label>
+                                <input type="text" class="form-control" name="youtube_url" id="youtube_url">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block" name="">Summarize</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Us -->
+<section class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Contact Us</h2>
+        <p class="text-center">Have questions, feedback, or suggestions? We'd love to hear from you! Feel free to
+            reach out to our team using the contact form below, and we'll get back to you as soon as possible.</p>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Your Email">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="5" placeholder="Your Message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-4">
+    <div class="container text-center">
+        <p>&copy; 2024 Media Summarizer. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Custom JS -->
+<script>
+    document.getElementById('document_type').addEventListener('change', function () {
+        var selectedValue = this.value;
+        if (selectedValue === 'youtube') {
+            document.getElementById('document').style.display = 'none';
+            document.getElementById('youtube_url_div').style.display = 'block';
+        } else {
+            document.getElementById('document').style.display = 'block';
+            document.getElementById('youtube_url_div').style.display = 'none';
+        }
+    });
+
+    document.getElementById('upload_form').addEventListener('submit', function (event) {
+        var documentType = document.getElementById('document_type').value;
+        var youtubeUrl = document.getElementById('youtube_url').value;
+        if (documentType === 'youtube' && youtubeUrl === '') {
+            alert('Please enter a YouTube URL.');
+            event.preventDefault();
+        }
+    });
+
+    // Add AJAX call to check summarization status and redirect to summary page when ready
+    // Example:
+    function checkSummarizationStatus() {
+        // Make an AJAX call to check the summarization status
+        // If summary is ready, redirect to the summary page
+        // Example:
+        // if (summary_ready) {
+        //     window.location.href = '{% url 'summary_page' %}';
+        // } else {
+        //     setTimeout(checkSummarizationStatus, 5000); // Check again after 5 seconds
+        // }
+    }
+    checkSummarizationStatus(); // Call the function when the page loads
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,260 @@
+/* Custom CSS for specific styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    /* Light gray background */
+    color: #333;
+    /* Dark text color */
+}
+
+.custom-divider {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.custom-divider:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #007bff, #00bcd4);
+    /* Gradient color */
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.custom-divider:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f8f9fa;
+    /* Light gray color */
+    clip-path: polygon(100% 0, 100% 100%, 0 50%);
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    /* Shadow effect */
+}
+
+.card-header {
+    background-color: #007bff;
+    /* Blue color */
+    color: #fff;
+    /* White text color */
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    /* Blue color */
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    /* Darker shade on hover */
+}
+
+footer {
+    background-color: #343a40;
+    /* Dark background color */
+    color: #fff;
+    /* White text color */
+    text-align: center;
+    padding: 20px 0;
+    /* Add padding top and bottom */
+}
+
+.navbar {
+    background-color: #343a40 !important;
+    /* Dark background color */
+}
+
+.nav-link {
+    color: #fff !important;
+    /* White text color */
+    transition: color 0.3s ease;
+    /* Smooth color transition */
+}
+
+.nav-link:hover {
+    color: #007bff !important;
+    /* Blue color on hover */
+}
+
+.navbar-brand {
+    font-size: 24px;
+}
+
+.navbar-toggler-icon {
+    background-color: #fff;
+    /* White background color */
+}
+
+.navbar-toggler {
+    border-color: #fff;
+    /* White border color */
+}
+
+.navbar-toggler:focus {
+    outline: none;
+    /* Remove focus outline */
+}
+
+.container {
+    max-width: 1200px;
+    /* Maximum width of content */
+}
+
+.text-center {
+    text-align: center !important;
+    /* Center align text */
+}
+
+.mb-4 {
+    margin-bottom: 40px !important;
+    /* Bottom margin */
+}
+
+.lead {
+    font-size: 18px;
+    /* Larger font size */
+}
+
+.form-control {
+    border-radius: 5px;
+    /* Rounded corners for form inputs */
+}
+
+.py-5 {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.py-4 {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.py-3 {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.bg-light {
+    background-color: #f8f9fa !important;
+    /* Light gray background */
+}
+
+#buffer
+
+:root {
+    --duration: 1.5s;
+    --container-size: 250px;
+    --box-size: 33px;
+    --box-border-radius: 15%;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-buffer {
+    width: var(--container-size);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.📦 {
+    width: var(--box-size);
+    height: var(--box-size);
+    position: relative;
+    display: block;
+    transform-origin: -50% center;
+    border-radius: var(--box-border-radius);
+}
+
+.📦:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: var(--box-border-radius);
+    box-shadow: 0px 0px 10px 0px rgba(28, 159, 255, 0.4);
+}
+
+/* Slide Animation */
+.📦:nth-child(1) {
+    animation: slide var(--duration) ease-in-out infinite alternate;
+    background-color: #1795FF;
+}
+@keyframes slide {
+    0% { background-color: #1795FF; transform: translateX(0vw); }
+    100% { background-color: #23D3FB; transform: translateX(calc(var(--container-size) - (var(--box-size) * 1.25))); }
+}
+
+/* Color Change Animations */
+.📦:nth-child(2):after {
+    background-color: #1C9FFF;
+}
+.📦:nth-child(3):after {
+    background-color: #1FB1FD;
+}
+.📦:nth-child(4):after {
+    background-color: #22C7FB;
+}
+.📦:nth-child(5):after {
+    background-color: #23D3FB;
+}
+
+/* Flip Animations */
+@keyframes flip-2 {
+    0%, 30% { transform: rotate(0); }  
+    50%, 100% { transform: rotate(-180deg); }
+}
+@keyframes flip-3 {
+    0%, 45% { transform: rotate(0); }  
+    65%, 100% { transform: rotate(-180deg); }
+}
+@keyframes flip-4 {
+    0%, 60% { transform: rotate(0); }  
+    80%, 100% { transform: rotate(-180deg); }
+}
+@keyframes flip-5 {
+    0%, 75% { transform: rotate(0); }  
+    95%, 100% { transform: rotate(-180deg); }
+}
+
+.📦:nth-child(2) {
+    animation: flip-2 var(--duration) ease-in-out infinite alternate;
+}
+.📦:nth-child(3) {
+    animation: flip-3 var(--duration) ease-in-out infinite alternate;
+}
+.📦:nth-child(4) {
+    animation: flip-4 var(--duration) ease-in-out infinite alternate;
+}
+.📦:nth-child(5) {
+    animation: flip-5 var(--duration) ease-in-out infinite alternate;
+}
