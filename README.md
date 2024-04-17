@@ -1,1 +1,1 @@
-
+The Media Summarization Project is a Python-based application that utilizes natural language processing (NLP) techniques to automatically summarize various types of media content, including text documents and YouTube videos. The project aims to provide users with concise summaries of lengthy media content, enabling them to quickly grasp the key information without having to go through the entire material.
